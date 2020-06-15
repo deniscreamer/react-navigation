@@ -106,6 +106,8 @@ export type BottomTabNavigationOptions = {
    * Defaults to `false`.
    */
   unmountOnBlur?: boolean;
+
+  showTabButton?: boolean;
 };
 
 export type BottomTabDescriptor = Descriptor<
@@ -195,6 +197,8 @@ export type BottomTabBarOptions = {
     bottom?: number;
     left?: number;
   };
+
+  showTabButton?: boolean;
   /**
    * Style object for the tab bar container.
    */

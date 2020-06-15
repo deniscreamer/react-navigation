@@ -260,34 +260,39 @@ export default function BottomTabBar({
               ? `${label}, tab, ${index + 1} of ${routes.length}`
               : undefined;
 
+          const showTabButton =
+            options.showTabButton !== undefined ? options.showTabButton : true;
+
           return (
             <NavigationContext.Provider
               key={route.key}
               value={descriptors[route.key].navigation}
             >
               <NavigationRouteContext.Provider value={route}>
-                <BottomTabItem
-                  route={route}
-                  focused={focused}
-                  horizontal={shouldUseHorizontalLabels()}
-                  onPress={onPress}
-                  onLongPress={onLongPress}
-                  accessibilityLabel={accessibilityLabel}
-                  to={buildLink(route.name, route.params)}
-                  testID={options.tabBarTestID}
-                  allowFontScaling={allowFontScaling}
-                  activeTintColor={activeTintColor}
-                  inactiveTintColor={inactiveTintColor}
-                  activeBackgroundColor={activeBackgroundColor}
-                  inactiveBackgroundColor={inactiveBackgroundColor}
-                  button={options.tabBarButton}
-                  icon={options.tabBarIcon}
-                  label={label}
-                  showIcon={showIcon}
-                  showLabel={showLabel}
-                  labelStyle={labelStyle}
-                  style={tabStyle}
-                />
+                {showTabButton ? (
+                  <BottomTabItem
+                    route={route}
+                    focused={focused}
+                    horizontal={shouldUseHorizontalLabels()}
+                    onPress={onPress}
+                    onLongPress={onLongPress}
+                    accessibilityLabel={accessibilityLabel}
+                    to={buildLink(route.name, route.params)}
+                    testID={options.tabBarTestID}
+                    allowFontScaling={allowFontScaling}
+                    activeTintColor={activeTintColor}
+                    inactiveTintColor={inactiveTintColor}
+                    activeBackgroundColor={activeBackgroundColor}
+                    inactiveBackgroundColor={inactiveBackgroundColor}
+                    button={options.tabBarButton}
+                    icon={options.tabBarIcon}
+                    label={label}
+                    showIcon={showIcon}
+                    showLabel={showLabel}
+                    labelStyle={labelStyle}
+                    style={tabStyle}
+                  />
+                ) : null}
               </NavigationRouteContext.Provider>
             </NavigationContext.Provider>
           );
